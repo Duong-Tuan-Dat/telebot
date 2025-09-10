@@ -1,3 +1,5 @@
+import logging
+logging.basicConfig(level=logging.INFO)
 import re
 import pytesseract
 import asyncio
@@ -403,4 +405,9 @@ app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
 app.add_handler(CallbackQueryHandler(button_callback))
-app.run_polling()
+app.run_polling(
+    timeout=60,
+    read_timeout=60,
+    write_timeout=60,
+    connect_timeout=60
+)
