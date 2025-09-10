@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-# Cài Tesseract + ngôn ngữ tiếng Việt
+# Cài Tesseract + tiếng Việt
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       tesseract-ocr tesseract-ocr-vie libgl1 \
@@ -16,6 +16,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy toàn bộ code
 COPY . .
 
-# Chạy app
-ENTRYPOINT ["python", "main.py"]
+# Chạy app trực tiếp
+CMD ["python", "main.py"]
 
